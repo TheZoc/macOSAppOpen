@@ -1,0 +1,33 @@
+#ifndef VERSION_H
+#define VERSION_H
+
+#ifndef STR
+#define STR(a) #a
+#endif
+
+#ifndef XSTR
+#define XSTR(a) STR(a)
+#endif
+
+#define VERSION_MAJOR $$VERSION_MAJOR
+#define VERSION_MINOR $$VERSION_MINOR
+#define VERSION_PATCH $$VERSION_PATCH
+#define VERSION_GIT_SHA1_STRING \"$$VERSION_GIT_SHA1\"
+#define VERSION_GIT_BRANCH \"$$VERSION_GIT_BRANCH_NAME\"
+
+#ifndef VERSION_BUILD
+#define VERSION_BUILD 0
+#endif
+
+#define VERSION_STRING \
+	XSTR(VERSION_MAJOR) \".\" \
+	XSTR(VERSION_MINOR) \".\" \
+	XSTR(VERSION_PATCH) \".\" \
+	XSTR(VERSION_BUILD)
+
+#define BUILD_DATE {\
+	__DATE__[4], __DATE__[5], \' \', \
+	__DATE__[0], __DATE__[1], __DATE__[2], \' \', \
+	__DATE__[7], __DATE__[8], __DATE__[9], __DATE__[10]}
+
+#endif  // VERSION_H
